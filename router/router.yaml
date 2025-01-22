@@ -29,3 +29,16 @@ subscription:
          path: /
 
 ## Enter Workshop Module Configs Below
+## Authentication and Authorization Module
+authentication:
+  router:
+    jwt:
+      header_name: Authorization
+      header_value_prefix: Bearer
+      jwks:
+        - url: https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com
+
+authorization:
+  require_authentication: false
+  directives: 
+    enabled: true
