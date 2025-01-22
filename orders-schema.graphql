@@ -4,7 +4,8 @@ extend schema
       "@key",
       "@tag",
       "@shareable",
-      "@authenticated"
+      "@authenticated",
+      "@requiresScopes"
     ]
   )
 
@@ -27,13 +28,13 @@ type Order @key(fields: "id") {
   """
   The user who made the purchase
   """
-  buyer: User! 
+  buyer: User! @requiresScopes(scopes: [["order:buyer"]])
 
   """
   A list of all the items they purchased. This is the Variants, not the Products so we know exactly which
   product and which size/color/feature was bought
   """
-  items: [ProductVariant!]!
+  items: [ProductVariant!]! @requiresScopes(scopes: [["order:items"]])
 }
 
 type User @key(fields: "id") {
