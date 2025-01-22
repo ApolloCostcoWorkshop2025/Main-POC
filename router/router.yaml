@@ -55,4 +55,13 @@ coprocessor:
     response:
       body: true
 
+persisted_queries:
+  enabled: true
+  safelist: 
+    enabled: true
+    require_id: false
+apq:
+  enabled: false
+
+
 
